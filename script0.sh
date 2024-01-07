@@ -1,3 +1,4 @@
 #!/bin/bash
-./archrus1.sh ; ./archrus2.sh 
+bash archrus1.sh
+bash archrus2.sh
 
