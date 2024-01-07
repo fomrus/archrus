@@ -75,6 +75,6 @@ pacstrap /mnt base base-devel linux linux-firmware nano dhcpcd netctl
 echo '3.3 Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
-/path/archrus2.sh
+#/path/archrus2.sh
 
-#arch-chroot /mnt sh -c "$(sh archrus2.sh)"
+arch-chroot /mnt sh -c "$(sh archrus2.sh)"
