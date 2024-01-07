@@ -4,7 +4,7 @@ read -p "Введите имя пользователя: " username
 
 echo 'Прописываем имя компьютера'
 echo $hostname > /etc/hostname
-ln -svf /usr/share/zoneinfo/Europe/Moscow  /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo '3.4 Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -25,7 +25,7 @@ mkinitcpio -p linux
 
 echo '3.5 Устанавливаем загрузчик'
 pacman -Syy
-pacman -S grub --noconfirm 
+pacman -S grub efibootmgr --noconfirm 
 grub-install /dev/sda
 
 echo 'Обновляем grub.cfg'
@@ -62,6 +62,8 @@ fi
 echo 'Ставим иксы и драйвера'
 pacman -S $gui_install
 
+echo "Ставим XFCE"
+pacman -S xfce4 xfce4-goodies --noconfirm
 
 echo 'Cтавим DM'
 pacman -S lxdm --noconfirm
@@ -70,12 +72,6 @@ systemctl enable lxdm
 echo 'Ставим шрифты'
 pacman -S ttf-liberation ttf-dejavu --noconfirm 
 
-echo 'Установка базовых программ и пакетов'
-sudo pacman -S reflector firefox firefox-i18n-ru ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
-
-echo "Ставим i3"
-pacman -S i3-gaps polybar dmenu pcmanfm xterm ttf-font-awesome feh gvfs udiskie ristretto tumbler picom jq --noconfirm
-    
 echo 'Ставим сеть'
 pacman -S networkmanager network-manager-applet ppp --noconfirm
 
@@ -83,5 +79,5 @@ echo 'Подключаем автозагрузку менеджера вход�
 systemctl enable NetworkManager
 
 echo 'Установка завершена! Перезагрузите систему.'
-echo rus
+echo RUS
 exit
