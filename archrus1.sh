@@ -77,4 +77,4 @@ genfstab -pU /mnt >> /mnt/etc/fstab
 
 #/path/archrus2.sh
 
-arch-chroot /mnt sh -c "$(sh archrus2.sh)"
+arch-chroot /mnt sh -c "$(sh archuefi2.sh)"
